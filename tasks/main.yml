@@ -3,3 +3,10 @@
   get_url:
     url: "{{ docker_key_url }}"
     dest: "{{ docker_key_path }}"
+
+- name: Get package architecture
+  command: dpkg --print-architecture
+  changed_when: no
+  register: package_architecture
+
+- debug: var=package_architecture
