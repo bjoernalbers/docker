@@ -9,4 +9,13 @@
   changed_when: no
   register: package_architecture
 
-- debug: var=package_architecture
+- name: Add APT repository
+  apt_repository:
+    repo: >
+        deb
+        [arch={{ package_architecture.stdout }} signed-by={{ docker_key_path }}]
+        {{ docker_repo_url }}
+        {{ ansible_distribution_release }}
+        stable
+    filename: "docker"
+    state: present
