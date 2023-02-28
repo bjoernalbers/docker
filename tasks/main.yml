@@ -19,3 +19,8 @@
         stable
     filename: "docker"
     state: present
+
+- name: Install packages
+  apt:
+    name: "{{ docker_packages }}"
+    state: present
