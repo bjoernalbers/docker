@@ -1,2 +1,5 @@
 ---
-# tasks file for docker
+- name: Download APT key
+  get_url:
+    url: "{{ docker_key_url }}"
+    dest: "{{ docker_key_path }}"

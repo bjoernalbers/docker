@@ -1,2 +1,3 @@
 ---
-# vars file for docker
+docker_key_url: "https://download.docker.com/linux/ubuntu/gpg"
+docker_key_path: "/etc/apt/keyrings/docker.asc"
