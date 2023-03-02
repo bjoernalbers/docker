@@ -3,9 +3,10 @@
   shell: >
     docker info --format {{ '{{.Swarm.LocalNodeState}}' }} | grep -qw inactive
   ignore_errors: yes
+  failed_when: no
   changed_when: no
   register: docker_swarm_is_inactive
 
-- name: Initialise Docker Swarm
+- name: Initialise Docker Swarm when inactive
   command: docker swarm init
-  when: docker_swarm_is_inactive is success
+  when: docker_swarm_is_inactive.rc == 0
