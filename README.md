@@ -8,7 +8,9 @@ None.
 
 ## Role Variables
 
-None.
+### `docker_swarm`
+
+Set `docker_swarm: yes` to initialize a Docker Swarm on the host (default: no).
 
 ## Dependencies
 
@@ -20,4 +22,5 @@ None.
     - hosts: all
       roles:
          - role: bjoernalbers.docker
+           docker_swarm: yes
 ```

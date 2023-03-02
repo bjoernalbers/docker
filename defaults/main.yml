@@ -1,2 +1,3 @@
 ---
-# defaults file for docker
+# Initialize Docker Swarm:
+docker_swarm: no
