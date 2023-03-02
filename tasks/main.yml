@@ -1,26 +1,3 @@
 ---
-- name: Download APT key
-  get_url:
-    url: "{{ docker_key_url }}"
-    dest: "{{ docker_key_path }}"
-
-- name: Get package architecture
-  command: dpkg --print-architecture
-  changed_when: no
-  register: package_architecture
-
-- name: Add APT repository
-  apt_repository:
-    repo: >
-        deb
-        [arch={{ package_architecture.stdout }} signed-by={{ docker_key_path }}]
-        {{ docker_repo_url }}
-        {{ ansible_distribution_release }}
-        stable
-    filename: "docker"
-    state: present
-
-- name: Install packages
-  apt:
-    name: "{{ docker_packages }}"
-    state: present
+- name: Install Docker
+  include_tasks: install.yml
