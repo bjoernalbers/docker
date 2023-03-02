@@ -7,6 +7,6 @@
   changed_when: no
   register: docker_swarm_is_inactive
 
-- name: Initialise Docker Swarm when inactive
+- name: Initialize Docker Swarm when inactive
   command: docker swarm init
   when: docker_swarm_is_inactive.rc == 0
