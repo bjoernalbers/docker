@@ -2,9 +2,9 @@
 - name: Check if Docker Swarm is inactive
   ansible.builtin.shell: >
     docker info --format {{ '{{.Swarm.LocalNodeState}}' }} | grep -qw inactive
-  ignore_errors: yes
-  failed_when: no
-  changed_when: no
+  ignore_errors: true
+  failed_when: false
+  changed_when: false
   register: docker_swarm_is_inactive
 
 - name: Initialize Docker Swarm when inactive

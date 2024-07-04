@@ -6,7 +6,7 @@
 
 - name: Get package architecture
   ansible.builtin.command: dpkg --print-architecture
-  changed_when: no
+  changed_when: false
   register: package_architecture
 
 - name: Add APT repository
