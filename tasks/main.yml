@@ -1,7 +1,7 @@
 ---
 - name: Include install tasks
-  include_tasks: install.yml
+  ansible.builtin.include_tasks: install.yml
 
 - name: Include Docker Swarm tasks
-  include_tasks: swarm.yml
+  ansible.builtin.include_tasks: swarm.yml
   when: docker_swarm

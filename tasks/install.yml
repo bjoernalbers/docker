@@ -1,16 +1,16 @@
 ---
 - name: Download APT key
-  get_url:
+  ansible.builtin.get_url:
     url: "{{ docker_key_url }}"
     dest: "{{ docker_key_path }}"
 
 - name: Get package architecture
-  command: dpkg --print-architecture
+  ansible.builtin.command: dpkg --print-architecture
   changed_when: no
   register: package_architecture
 
 - name: Add APT repository
-  apt_repository:
+  ansible.builtin.apt_repository:
     repo: >
         deb
         [arch={{ package_architecture.stdout }} signed-by={{ docker_key_path }}]
@@ -21,6 +21,6 @@
     state: present
 
 - name: Install packages
-  apt:
+  ansible.builtin.apt:
     name: "{{ docker_packages }}"
     state: present
