@@ -3,6 +3,7 @@
   ansible.builtin.get_url:
     url: "{{ docker_key_url }}"
     dest: "{{ docker_key_path }}"
+    mode: '0644'
 
 - name: Get package architecture
   ansible.builtin.command: dpkg --print-architecture
