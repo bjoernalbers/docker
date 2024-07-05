@@ -9,4 +9,5 @@
 
 - name: Initialize Docker Swarm when inactive
   ansible.builtin.command: docker swarm init
+  changed_when: true
   when: docker_swarm_is_inactive.rc == 0
